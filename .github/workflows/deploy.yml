@@ -19,25 +19,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
           cache: 'npm'
           cache-dependency-path: './resume-modern/package-lock.json'
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
         with:
           static_site_generator: next
       - name: Install dependencies
         run: cd resume-modern && npm ci
       - name: Build with Next.js
         run: cd resume-modern && npm run build
-      - name: Static HTML export with Next.js
-        run: cd resume-modern && npx next export || npm run export || echo "Export command not found, trying output workaround"
+      # Next.js 13.3+ no longer needs explicit export command with output: 'export' in config
+      # Just in case we're handling older versions too
+      - name: Static HTML export fallback (not normally needed)
+        run: cd resume-modern && (ls out || (npx next export || npm run export || echo "Export command not relevant - using build output directly"))
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./resume-modern/out
 
@@ -50,4 +52,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
