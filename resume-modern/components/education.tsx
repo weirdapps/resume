@@ -43,9 +43,9 @@ export default function Education() {
             <FiBookOpen className="mt-1 mr-3 text-primary-500 flex-shrink-0 w-5 h-5" />
             <div>
               <h3 className="font-semibold text-gray-800 dark:text-gray-200">{item.degree}</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-justify">{item.institution}</p>
+              <p className="text-gray-700 dark:text-gray-300">{item.institution}</p>
               <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{item.years}</p>
-              <p className="text-gray-600 dark:text-gray-400 italic mt-1 text-justify">{item.concentration}</p>
+              <p className="text-gray-600 dark:text-gray-400 italic mt-1">{item.concentration}</p>
             </div>
           </motion.div>
         ))}
