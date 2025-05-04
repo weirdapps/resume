@@ -55,7 +55,7 @@ export default function Skills() {
             <h3 className="font-semibold text-gray-800 dark:text-gray-200">Professional Skills</h3>
           </div>
           
-          <p className="text-gray-700 dark:text-gray-300 mb-4 text-justify">
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
             Advanced knowledge of operating systems, software, programming
           </p>
           
