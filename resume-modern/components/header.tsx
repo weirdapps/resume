@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiMapPin, FiPhone, FiMail, FiLinkedin } from "react-icons/fi";
 import Image from 'next/image';
+import { getAssetPath } from '../utils/path-utils';
 
 export default function Header() {
   return (
@@ -66,7 +67,7 @@ export default function Header() {
         >
           <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-lg">
             <Image 
-              src="/images/PD.png" 
+              src={getAssetPath("/images/PD.png")} 
               alt="Dimitrios Plessas" 
               width={192} 
               height={192} 
