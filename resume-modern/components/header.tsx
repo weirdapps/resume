@@ -29,7 +29,7 @@ export default function Header() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="text-xl text-gray-600 dark:text-gray-300 mt-2 text-center md:text-left"
           >
-            engineer by training, banker by trade, ex McKinsey consultant
+            Engineer by Training, Banker by Trade, ex McKinsey
           </motion.p>
           
           <motion.div
