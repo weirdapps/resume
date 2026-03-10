@@ -10,7 +10,7 @@
     "export": "next export"
   },
   "dependencies": {
-    "framer-motion": "^11.0.3",
+    "framer-motion": "^12.35.2",
     "next": "^15.5.12",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
