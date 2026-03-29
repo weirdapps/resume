@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: "18"
+          node-version: "22"
           cache: 'npm'
           cache-dependency-path: './resume-modern/package-lock.json'
       - name: Setup Pages
@@ -33,10 +33,6 @@ jobs:
         run: cd resume-modern && npm ci
       - name: Build with Next.js
         run: cd resume-modern && npm run build
-      # Next.js 13.3+ no longer needs explicit export command with output: 'export' in config
-      # Just in case we're handling older versions too
-      - name: Static HTML export fallback (not normally needed)
-        run: cd resume-modern && (ls out || (npx next export || npm run export || echo "Export command not relevant - using build output directly"))
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
