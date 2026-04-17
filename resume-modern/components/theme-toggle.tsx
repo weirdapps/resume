@@ -1,16 +1,16 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import { FiSun, FiMoon } from "react-icons/fi";
 
+const emptySubscribe = () => () => {};
+
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
-  // Avoid hydration mismatch
-  useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   return (
