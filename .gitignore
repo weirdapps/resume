@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 resume-modern/out/
 .DS_Store
 .env
