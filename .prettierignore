@@ -1,0 +1,6 @@
+node_modules/
+dist/
+build/
+.next/
+resume-modern/node_modules/
+resume-modern/.next/
