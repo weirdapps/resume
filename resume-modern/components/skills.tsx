@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FiGlobe, FiCode, FiLayers } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import { FiGlobe, FiCode, FiLayers } from 'react-icons/fi';
 
 export default function Skills() {
   const languages = [
-    { name: "English", level: "Fluent", percentage: 90 },
-    { name: "French", level: "Good", percentage: 70 },
-    { name: "Greek", level: "Fluent (Native)", percentage: 100 }
+    { name: 'English', level: 'Fluent', percentage: 90 },
+    { name: 'French', level: 'Good', percentage: 70 },
+    { name: 'Greek', level: 'Fluent (Native)', percentage: 100 },
   ];
 
   return (
@@ -21,19 +21,21 @@ export default function Skills() {
         <FiLayers className="mr-2 text-primary-500 flex-shrink-0" />
         Skills & Languages
       </h2>
-      
+
       <div className="space-y-6">
         <div>
           <div className="flex items-center mb-3">
             <FiGlobe className="mr-2 text-primary-500 w-5 h-5" />
             <h3 className="font-semibold text-gray-800 dark:text-gray-200">Languages</h3>
           </div>
-          
+
           <div className="space-y-4">
             {languages.map((language, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-gray-700 dark:text-gray-300 font-medium">{language.name}</span>
+                  <span className="text-gray-700 dark:text-gray-300 font-medium">
+                    {language.name}
+                  </span>
                   <span className="text-gray-600 dark:text-gray-400 text-sm">{language.level}</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
@@ -48,19 +50,25 @@ export default function Skills() {
             ))}
           </div>
         </div>
-        
+
         <div>
           <div className="flex items-center mb-3">
             <FiCode className="mr-2 text-primary-500 w-5 h-5" />
             <h3 className="font-semibold text-gray-800 dark:text-gray-200">Professional Skills</h3>
           </div>
-          
+
           <p className="text-gray-700 dark:text-gray-300 mb-4">
             Advanced knowledge of operating systems, software, programming
           </p>
-          
+
           <div className="flex flex-wrap gap-2">
-            {["Strategic Planning", "Digital Transformation", "Financial Analysis", "Project Management", "Team Leadership"].map((skill, index) => (
+            {[
+              'Strategic Planning',
+              'Digital Transformation',
+              'Financial Analysis',
+              'Project Management',
+              'Team Leadership',
+            ].map((skill, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}

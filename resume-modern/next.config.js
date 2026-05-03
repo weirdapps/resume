@@ -5,9 +5,9 @@ const nextConfig = {
     unoptimized: true,
   },
   output: 'export',
-  basePath: process.env.NODE_ENV === "production" ? "/resume" : "",
+  basePath: process.env.NODE_ENV === 'production' ? '/resume' : '',
   trailingSlash: true,
-  assetPrefix: process.env.NODE_ENV === "production" ? "/resume" : ""
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/resume' : '',
 };
 
 module.exports = nextConfig;

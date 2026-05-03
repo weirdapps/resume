@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FiUser, FiCalendar, FiHeart, FiFlag } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import { FiUser, FiCalendar, FiHeart, FiFlag } from 'react-icons/fi';
 
 export default function PersonalInfo() {
   return (
@@ -15,33 +15,39 @@ export default function PersonalInfo() {
         <FiUser className="mr-2 text-primary-500 flex-shrink-0" />
         Personal Information
       </h2>
-      
+
       <ul className="space-y-4">
         <li className="flex items-center">
           <div className="flex items-center w-full justify-between">
             <div className="flex items-center">
               <FiFlag className="w-5 h-5 mr-3 text-primary-500 flex-shrink-0" />
-              <span className="font-medium text-gray-800 dark:text-gray-200 w-32">Nationality:</span>
+              <span className="font-medium text-gray-800 dark:text-gray-200 w-32">
+                Nationality:
+              </span>
             </div>
             <span className="text-gray-700 dark:text-gray-300 ml-2">Greek</span>
           </div>
         </li>
-        
+
         <li className="flex items-center">
           <div className="flex items-center w-full justify-between">
             <div className="flex items-center">
               <FiCalendar className="w-5 h-5 mr-3 text-primary-500 flex-shrink-0" />
-              <span className="font-medium text-gray-800 dark:text-gray-200 w-32">Date of Birth:</span>
+              <span className="font-medium text-gray-800 dark:text-gray-200 w-32">
+                Date of Birth:
+              </span>
             </div>
             <span className="text-gray-700 dark:text-gray-300 ml-2">02.10.1974</span>
           </div>
         </li>
-        
+
         <li className="flex items-center">
           <div className="flex items-center w-full justify-between">
             <div className="flex items-center">
               <FiHeart className="w-5 h-5 mr-3 text-primary-500 flex-shrink-0" />
-              <span className="font-medium text-gray-800 dark:text-gray-200 w-32">Marital Status:</span>
+              <span className="font-medium text-gray-800 dark:text-gray-200 w-32">
+                Marital Status:
+              </span>
             </div>
             <span className="text-gray-700 dark:text-gray-300 ml-2">Married</span>
           </div>

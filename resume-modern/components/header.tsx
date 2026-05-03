@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FiMapPin, FiPhone, FiMail, FiLinkedin } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import { FiMapPin, FiPhone, FiMail, FiLinkedin } from 'react-icons/fi';
 import Image from 'next/image';
 import { getAssetPath } from '../utils/path-utils';
 
@@ -31,7 +31,7 @@ export default function Header() {
           >
             Engineer by Training, Banker by Trade, ex McKinsey
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -52,13 +52,16 @@ export default function Header() {
             </div>
             <div className="flex items-center">
               <FiLinkedin className="text-primary-500 mr-3 flex-shrink-0 w-5 h-5" />
-              <a href="https://www.linkedin.com/in/plessas/" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              <a
+                href="https://www.linkedin.com/in/plessas/"
+                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >
                 linkedin.com/in/plessas
               </a>
             </div>
           </motion.div>
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -66,11 +69,11 @@ export default function Header() {
           className="order-1 md:order-2 md:w-1/3 flex justify-center"
         >
           <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-lg">
-            <Image 
-              src={getAssetPath("/images/PD.png")} 
-              alt="Dimitrios Plessas" 
-              width={192} 
-              height={192} 
+            <Image
+              src={getAssetPath('/images/PD.png')}
+              alt="Dimitrios Plessas"
+              width={192}
+              height={192}
               className="object-cover w-full h-full"
               priority
             />

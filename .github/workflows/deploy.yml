@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ['master']
   workflow_dispatch:
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
   pages: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
-          node-version: "22"
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: './resume-modern/package-lock.json'
       - name: Setup Pages

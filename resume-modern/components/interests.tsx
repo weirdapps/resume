@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FiAnchor, FiVolume2, FiCamera, FiCpu, FiCode, FiHeart, FiSun } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import { FiAnchor, FiVolume2, FiCamera, FiCpu, FiCode, FiHeart, FiSun } from 'react-icons/fi';
 
 export default function Interests() {
   const interests = [
-    { name: "Sailing", icon: <FiAnchor /> },
-    { name: "Volleyball", icon: <FiSun /> },
-    { name: "Photography", icon: <FiCamera /> },
-    { name: "Technology", icon: <FiCpu /> },
-    { name: "Programming", icon: <FiCode /> }
+    { name: 'Sailing', icon: <FiAnchor /> },
+    { name: 'Volleyball', icon: <FiSun /> },
+    { name: 'Photography', icon: <FiCamera /> },
+    { name: 'Technology', icon: <FiCpu /> },
+    { name: 'Programming', icon: <FiCode /> },
   ];
 
   return (
@@ -23,7 +23,7 @@ export default function Interests() {
         <FiHeart className="mr-2 text-primary-500 flex-shrink-0" />
         Interests
       </h2>
-      
+
       <div className="flex flex-wrap gap-3">
         {interests.map((interest, index) => (
           <motion.div

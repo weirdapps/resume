@@ -1,25 +1,28 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FiAward } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import { FiAward } from 'react-icons/fi';
 
 export default function BoardMemberships() {
   const memberships = [
     {
-      company: "DIAS Interbanking Systems S.A.",
-      period: "2021 - Present",
-      description: "DIAS is the National Automated Clearing House (ACH) for Greece. The Company's shareholders are Bank of Greece, credit institutions and finance related entities focusing on payments"
+      company: 'DIAS Interbanking Systems S.A.',
+      period: '2021 - Present',
+      description:
+        "DIAS is the National Automated Clearing House (ACH) for Greece. The Company's shareholders are Bank of Greece, credit institutions and finance related entities focusing on payments",
     },
     {
-      company: "NBG Pay S.A.",
-      period: "2021 - Present",
-      description: "NBG Pay is a JV between National Bank of Greece and Global Payments, focusing on providing acquiring services in Greece"
+      company: 'NBG Pay S.A.',
+      period: '2021 - Present',
+      description:
+        'NBG Pay is a JV between National Bank of Greece and Global Payments, focusing on providing acquiring services in Greece',
     },
     {
-      company: "NBG Bancassurance S.A.",
-      period: "2016 - 2019",
-      description: "NBG Bancassurance was an NBG subsidiary focusing on providing bancassurance products to the bank's customers"
-    }
+      company: 'NBG Bancassurance S.A.',
+      period: '2016 - 2019',
+      description:
+        "NBG Bancassurance was an NBG subsidiary focusing on providing bancassurance products to the bank's customers",
+    },
   ];
 
   return (
@@ -32,7 +35,7 @@ export default function BoardMemberships() {
       <h2 className="text-xl font-semibold text-primary-600 dark:text-primary-400 border-b border-primary-200 dark:border-primary-800 pb-3 mb-6">
         Board Memberships
       </h2>
-      
+
       <div className="space-y-6">
         {memberships.map((membership, index) => (
           <motion.div
@@ -50,7 +53,9 @@ export default function BoardMemberships() {
                 <h3 className="font-bold text-gray-800 dark:text-gray-200">{membership.company}</h3>
                 <span className="text-primary-600 dark:text-primary-400">{membership.period}</span>
               </div>
-              <p className="mt-2 text-gray-700 dark:text-gray-300 text-justify">{membership.description}</p>
+              <p className="mt-2 text-gray-700 dark:text-gray-300 text-justify">
+                {membership.description}
+              </p>
             </div>
           </motion.div>
         ))}

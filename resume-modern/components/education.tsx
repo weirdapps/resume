@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { FiBookOpen, FiAward } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import { FiBookOpen, FiAward } from 'react-icons/fi';
 
 export default function Education() {
   const educationItems = [
     {
-      degree: "M.Sc. in Decision Sciences",
-      institution: "Athens Univ. of Economics and Business (AUEB)",
-      years: "2001 - 2002",
-      concentration: "Financial Engineering concentration"
+      degree: 'M.Sc. in Decision Sciences',
+      institution: 'Athens Univ. of Economics and Business (AUEB)',
+      years: '2001 - 2002',
+      concentration: 'Financial Engineering concentration',
     },
     {
-      degree: "M.Sc. in Mechanical Engineering",
-      institution: "National Technical University of Athens (NTUA)",
-      years: "1993 - 1999",
-      concentration: "Operational Research concentration"
-    }
+      degree: 'M.Sc. in Mechanical Engineering',
+      institution: 'National Technical University of Athens (NTUA)',
+      years: '1993 - 1999',
+      concentration: 'Operational Research concentration',
+    },
   ];
 
   return (
@@ -30,7 +30,7 @@ export default function Education() {
         <FiAward className="mr-2 text-primary-500 flex-shrink-0" />
         Education
       </h2>
-      
+
       <div className="space-y-6">
         {educationItems.map((item, index) => (
           <motion.div
