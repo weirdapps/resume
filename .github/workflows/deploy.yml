@@ -5,16 +5,14 @@ on:
     branches: ['master']
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-
 concurrency:
   group: 'pages'
   cancel-in-progress: false
 
 jobs:
   build:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,7 +28,7 @@ jobs:
         with:
           static_site_generator: next
       - name: Install dependencies
-        run: cd resume-modern && npm ci
+        run: cd resume-modern && npm ci --ignore-scripts
       - name: Build with Next.js
         run: cd resume-modern && npm run build
       - name: Upload artifact
@@ -40,6 +38,7 @@ jobs:
 
   deploy:
     permissions:
+      contents: read
       id-token: write
       pages: write
     environment:

@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: resume-modern
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Check for test script
         id: check-tests
