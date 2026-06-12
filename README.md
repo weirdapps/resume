@@ -1,6 +1,11 @@
 # Resume
 
-Personal resume / CV website for Dimitrios Plessas, built as a static site with Next.js.
+[![Deploy to GitHub Pages](https://github.com/weirdapps/resume/actions/workflows/deploy.yml/badge.svg)](https://github.com/weirdapps/resume/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js&logoColor=white)](https://nextjs.org/)
+
+Personal resume / CV website for Dimitrios Plessas — AGM, Cards & Digital Business at National Bank of Greece. Built with Next.js and deployed to GitHub Pages, with light/dark mode and smooth animations.
 
 **Live site**: [weirdapps.github.io/resume](https://weirdapps.github.io/resume/)
 
@@ -14,7 +19,7 @@ Personal resume / CV website for Dimitrios Plessas, built as a static site with 
 
 ## Project Structure
 
-```
+```text
 resume-modern/        # Next.js application
   app/                # App Router pages and layout
   components/         # UI components (header, experience, education, etc.)
