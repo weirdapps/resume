@@ -18,12 +18,16 @@ jobs:
       - name: Enable auto-merge for safe updates
         # Auto-merge: patch + minor for ALL ecosystems, including grouped updates.
         # Major version bumps still require manual review.
+        #
+        # `gh pr merge --auto` only arms when the branch has required status
+        # checks; this repo's ruleset defines none, so `--auto` errors out.
+        # Fall back to a direct squash merge for the safe updates gated above.
         if: |
           steps.meta.outputs.update-type == 'version-update:semver-patch' ||
           steps.meta.outputs.update-type == 'version-update:semver-minor' ||
           steps.meta.outputs.update-type == 'version-update:semver-patchminor' ||
           steps.meta.outputs.dependency-group != ''
-        run: gh pr merge --auto --squash "$PR_URL"
+        run: gh pr merge --auto --squash "$PR_URL" || gh pr merge --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
