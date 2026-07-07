@@ -1,62 +1,43 @@
-# Dimitrios Plessas - Modern Resume
+# resume-modern
 
-A modern, responsive resume built with Next.js, Tailwind CSS, and Framer Motion.
+The Next.js application that renders the resume. See the [repository README](../README.md) for the full architecture, deployment pipeline, and content-editing guide; this file is a short pointer to what lives in this directory.
 
-## Features
+## Stack
 
-- ✅ Modern design with Next.js 14 and App Router
-- ✅ Fully responsive layout (mobile, tablet, desktop)
-- ✅ Dark mode support with theme toggle
-- ✅ Smooth animations with Framer Motion
-- ✅ Built with TypeScript for type safety
-- ✅ SEO optimized
-- ✅ Print-friendly for PDF generation
+Grounded in `package.json`:
 
-## Getting Started
+- Next.js 16 with the App Router and `output: 'export'` for a fully static build
+- React 19, TypeScript 6
+- Tailwind CSS 4 (via `@tailwindcss/postcss`)
+- framer-motion 12 for section animations
+- next-themes for light / dark / system theming
+- react-icons for icons
 
-First, install the dependencies:
+## Commands
+
+Run everything from this directory (`resume-modern/`), not the repo root.
 
 ```bash
-cd resume-modern
 npm install
+npm run dev          # dev server at http://localhost:3000
+npm run build        # static export written to ./out
+npm run lint         # ESLint (config in eslint.config.mjs)
 ```
 
-Then, run the development server:
+There is no test suite. The `start` script defined in `package.json` is inherited from the Next.js scaffold and is not used, because `output: 'export'` produces a static bundle rather than a runtime server.
 
-```bash
-npm run dev
-```
+## Static export and GitHub Pages
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`next.config.js` sets `output: 'export'`, `images.unoptimized: true`, and switches `basePath` / `assetPrefix` to `/resume` in production. Running `npm run build` writes a fully static bundle to `./out`, which the repository workflow `.github/workflows/deploy.yml` uploads to GitHub Pages at <https://weirdapps.github.io/resume/>.
 
-## Building for Production
+The production bundle assumes `/resume` as its base path, so serving `./out` from a naked root will 404 on assets. Preview via the deploy workflow, or serve under a matching path.
 
-To build the application for production:
+## Layout
 
-```bash
-npm run build
-```
+- `app/`: App Router entry (`layout.tsx`, `page.tsx`, `globals.css`)
+- `components/`: one `.tsx` per resume section (header, personal-info, education, skills, interests, experience, board-memberships, footer, plus theme-provider and theme-toggle)
+- `public/`: static assets, including `images/PD.png` used by `header.tsx`
+- `utils/path-utils.ts`: base-path-aware asset resolver used by components
+- `styles/`: additional stylesheet inputs alongside `app/globals.css`
 
-To start the production server:
-
-```bash
-npm run start
-```
-
-## Print to PDF
-
-Use the "Print Resume" button in the footer or press Ctrl+P (Windows/Linux) or Cmd+P (Mac) to print the resume to PDF. The print version is optimized for PDF output.
-
-## Technologies Used
-
-- [Next.js](https://nextjs.org/) - React framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
-- [Framer Motion](https://www.framer.com/motion/) - Animation library
-- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
-- [next-themes](https://github.com/pacocoursey/next-themes) - Theme management
-
-## Customization
-
-- Update the content in each component to reflect your information
-- Customize colors by modifying the Tailwind config
-- Add or remove sections as needed
+To change CV content, edit the relevant component under `components/`. See the [repository README](../README.md#editing-cv-content) for the field-to-file map.
