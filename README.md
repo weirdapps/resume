@@ -175,6 +175,6 @@ resume/
 
 ## License
 
-MIT, see [LICENSE](LICENSE). Copyright (c) 2026 Dimitris Plessas.
+MIT, see [LICENSE](LICENSE). Copyright (c) 2026 Dimitrios Plessas.
 
 Security policy: see [SECURITY.md](SECURITY.md). Please email `plessas@nbg.gr` for responsible disclosure; do not open a public issue for vulnerabilities.
