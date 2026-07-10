@@ -52,7 +52,7 @@ Grounded in `resume-modern/`:
 ## Architecture
 
 ```mermaid
-flowchart LR
+flowchart TD
   A[resume-modern/<br/>Next.js 16 App Router] --> B[npm run build<br/>next build]
   B --> C[Static export<br/>resume-modern/out/]
   C --> D[actions/upload-pages-artifact]
