@@ -22,9 +22,12 @@ npm install
 npm run dev          # dev server at http://localhost:3000
 npm run build        # static export written to ./out
 npm run lint         # ESLint (config in eslint.config.mjs)
+npm run typecheck    # tsc --noEmit
 ```
 
-There is no test suite. The `start` script defined in `package.json` is inherited from the Next.js scaffold and is not used, because `output: 'export'` produces a static bundle rather than a runtime server.
+There is no unit-test suite; `lint`, `typecheck`, and `build` are the verification gates, and `lint` plus `typecheck` run in CI via `.github/workflows/quality.yml`. The `start` script defined in `package.json` is inherited from the Next.js scaffold and is not used, because `output: 'export'` produces a static bundle rather than a runtime server.
+
+TypeScript is held on 6.x and ESLint on 9.x on purpose. See [Pinned major versions](../README.md#pinned-major-versions) for why, and do not bump either major without re-reading that section.
 
 ## Static export and GitHub Pages
 

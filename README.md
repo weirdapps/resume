@@ -1,6 +1,7 @@
 # resume
 
 [![Deploy to GitHub Pages](https://github.com/weirdapps/resume/actions/workflows/deploy.yml/badge.svg)](https://github.com/weirdapps/resume/actions/workflows/deploy.yml)
+[![Quality](https://github.com/weirdapps/resume/actions/workflows/quality.yml/badge.svg)](https://github.com/weirdapps/resume/actions/workflows/quality.yml)
 [![CodeQL](https://github.com/weirdapps/resume/actions/workflows/codeql.yml/badge.svg)](https://github.com/weirdapps/resume/actions/workflows/codeql.yml)
 [![SonarCloud](https://github.com/weirdapps/resume/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/weirdapps/resume/actions/workflows/sonarcloud.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -86,14 +87,22 @@ npm run build        # writes static export to resume-modern/out/
 
 To sanity-check the exported bundle without GitHub Pages you can serve `resume-modern/out/` with any static server (e.g. `npx serve resume-modern/out`). Because production uses `basePath: '/resume'`, running the exported bundle at a naked root will 404 on assets; set the base path to `/resume` or preview via the workflow.
 
-Linting:
+Linting and type-checking:
 
 ```bash
 cd resume-modern
-npm run lint
+npm run lint         # ESLint
+npm run typecheck    # tsc --noEmit
 ```
 
-There is currently **no test suite** (the SonarCloud workflow explicitly detects and skips coverage upload when no `test` script exists in `package.json`).
+Both run in CI via `.github/workflows/quality.yml`. There is currently **no unit-test suite** (the SonarCloud workflow explicitly detects and skips coverage upload when no `test` script exists in `package.json`), so lint plus typecheck plus the production build are the verification gates.
+
+### Pinned major versions
+
+Two dependencies are deliberately held back, and Dependabot is configured in `.github/dependabot.yml` to stop proposing their majors:
+
+- **TypeScript stays on 6.x.** TypeScript 7 (the Go-native compiler) is rejected by both tools in this stack. `next build` fails with "TypeScript 7.x does not provide the compiler API required by Next.js", recoverable only through the experimental `useTypeScriptCli` flag, and `typescript-eslint` throws "does not support TS 7.0", which stops `eslint-config-next` from loading so `npm run lint` cannot run at all. Revisit when TS 7.1 ships the stable programmatic API.
+- **ESLint stays on 9.x.** `eslint-config-next` pulls in `eslint-plugin-react` 7.37.5, whose peer range ends at eslint `^9.7`. On eslint 10 every lint run crashes with `contextOrFilename.getFilename is not a function`. Revisit when `eslint-config-next` supports eslint 10.
 
 ## Deployment
 
@@ -127,10 +136,11 @@ Asset URLs must go through `utils/path-utils.ts::getAssetPath(...)` so they reso
 
 ## Continuous integration
 
-Four workflows under `.github/workflows/`:
+Five workflows under `.github/workflows/`:
 
 - **`deploy.yml`**: build + deploy to GitHub Pages (see above).
-- **`codeql.yml`**: GitHub CodeQL static analysis for JavaScript / TypeScript. Runs on every push and PR to `master`, plus a weekly Monday 06:00 UTC cron.
+- **`quality.yml`**: ESLint + `tsc --noEmit` on every push and PR to `master`. Kept separate from `deploy.yml` on purpose, so a lint regression can never stop the live site from deploying.
+- **`codeql.yml`**: GitHub CodeQL static analysis for JavaScript / TypeScript. Runs on every push and PR to `master`, plus a weekly Monday 06:00 UTC cron. The `init` and `analyze` steps must stay pinned to the same `github/codeql-action` version; mixed versions make `analyze` fail to find the database that `init` created.
 - **`sonarcloud.yml`**: SonarCloud scan (project key `weirdapps_resume`, organisation `weirdapps`). Runs on push, PR, and `workflow_dispatch`. Gracefully no-ops when `SONAR_TOKEN` is not configured, and skips the coverage step when there is no `test` script.
 - **`dependabot-auto-merge.yml`**: auto-squash-merges Dependabot PRs that are patch / minor / grouped updates. Major bumps require manual review. Uses `gh pr merge --auto --squash`, falling back to a direct squash when the branch has no required checks to gate on.
 
@@ -147,6 +157,7 @@ resume/
 │       ├── codeql.yml
 │       ├── deploy.yml
 │       ├── dependabot-auto-merge.yml
+│       ├── quality.yml
 │       └── sonarcloud.yml
 ├── assets/                     # legacy images kept outside the Next.js app
 ├── resume-modern/              # THE app (run all npm commands from here)
