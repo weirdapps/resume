@@ -45,15 +45,18 @@ repos:
       - id: gitleaks
 
   # YAML linting for GitHub Actions
+  # truthy check-keys is off because GitHub Actions requires a bare `on:` key,
+  # which yamllint otherwise reads as the boolean true. comments is relaxed to
+  # one space because Dependabot writes its `# vX.Y.Z` pin comments that way.
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.35.1
     hooks:
       - id: yamllint
-        args:
-          [
+        args: [
             --strict,
             -d,
-            '{extends: default, rules: {line-length: {max: 120}, document-start: disable}}',
+            '{extends: default, rules: {line-length: {max: 120}, document-start: disable,
+            truthy: {check-keys: false}, comments: {min-spaces-from-content: 1}}}',
           ]
         files: \.github/workflows/.*\.ya?ml$
 

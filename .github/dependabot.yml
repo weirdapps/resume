@@ -8,3 +8,21 @@ updates:
     directory: '/resume-modern'
     schedule:
       interval: 'weekly'
+    ignore:
+      # TypeScript 7 (Go-native) is blocked by two upstream refusals:
+      #   1. next build errors with "TypeScript 7.x does not provide the
+      #      compiler API required by Next.js". The only escape is the
+      #      experimental useTypeScriptCli flag, too risky for a live site.
+      #   2. typescript-eslint throws "does not support TS 7.0", which stops
+      #      eslint-config-next from loading at all, so npm run lint dies.
+      # Revisit once TS 7.1 ships the stable programmatic API and both
+      # Next.js and typescript-eslint declare support.
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+      # ESLint 10 is blocked by eslint-plugin-react 7.37.5 (pulled in by
+      # eslint-config-next), whose peer range stops at eslint ^9.7. On
+      # eslint 10 every lint run crashes with
+      # "contextOrFilename.getFilename is not a function".
+      # Revisit once eslint-config-next supports eslint 10.
+      - dependency-name: 'eslint'
+        update-types: ['version-update:semver-major']
