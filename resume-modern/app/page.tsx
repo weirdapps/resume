@@ -5,6 +5,7 @@ import Skills from '@/components/skills';
 import Interests from '@/components/interests';
 import Experience from '@/components/experience';
 import BoardMemberships from '@/components/board-memberships';
+import Profile from '@/components/profile';
 import Footer from '@/components/footer';
 import ThemeToggle from '@/components/theme-toggle';
 
@@ -27,8 +28,9 @@ export default function Home() {
             <Interests />
           </div>
 
-          {/* Right Column - Professional Experience */}
+          {/* Right Column - Profile, executive track record, then board mandates */}
           <div className="lg:col-span-2 space-y-6 md:space-y-8">
+            <Profile />
             <Experience />
             <BoardMemberships />
           </div>
