@@ -15,6 +15,7 @@ export default function Experience() {
         'Embedded Banking: strategy definition, product development, key partnership agreements, balance sheet responsibility for ~€400mn loan disbursements per annum',
         'Self-Service Machines: footprint optimization and improvement of operational efficiency for the ATM, APS and PPU fleet',
         'Contact Center: strategy definition, operational efficiency, and direct sales performance management',
+        'Fraud and AML Execution: anti-fraud and anti-money-laundering framework for the retail channels',
         'Bank-Wide Loyalty: go-to market strategy, customer engagement strategy',
       ],
     },
