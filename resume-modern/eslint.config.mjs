@@ -54,12 +54,46 @@ export default tseslint.config(
   eslintReact.configs['recommended-typescript'],
 
   // React Hooks rules.
-  // NB: reactHooks.configs['recommended-latest'] is still the legacy eslintrc
-  // shape (plugins as an array of strings) and eslint 10 rejects it. The flat
-  // shape lives under configs.flat.
+  // NB: reactHooks.configs['recommended-latest'] and .configs.recommended are
+  // both still the legacy eslintrc shape (plugins as an array of strings) and
+  // eslint 10 rejects them. The flat shape lives under configs.flat.
+  // flat.recommended is 16 rules, exactly what eslint-config-next enabled;
+  // flat['recommended-latest'] would add a 17th (react-hooks/void-use-memo).
   {
     name: 'react-hooks/recommended',
-    ...reactHooks.configs.flat['recommended-latest'],
+    ...reactHooks.configs.flat.recommended,
+  },
+
+  // @eslint-react reimplements nine rules that eslint-plugin-react-hooks
+  // already provides under the same short names, so both would run the same
+  // check twice at different severities (react-hooks/purity is 'error' here,
+  // @eslint-react/purity is 'warn'). eslint-plugin-react-hooks is the React
+  // team's own plugin and was in the eslint 9 baseline at these severities,
+  // so it wins and @eslint-react's copies are turned off.
+  // Not using @eslint-react's own disable-conflict-eslint-plugin-react-hooks
+  // preset: that resolves the clash the other way, disabling react-hooks/*.
+  {
+    name: 'eslint-react/drop-react-hooks-duplicates',
+    rules: {
+      '@eslint-react/rules-of-hooks': 'off',
+      '@eslint-react/exhaustive-deps': 'off',
+      '@eslint-react/static-components': 'off',
+      '@eslint-react/use-memo': 'off',
+      '@eslint-react/set-state-in-effect': 'off',
+      '@eslint-react/error-boundaries': 'off',
+      '@eslint-react/purity': 'off',
+      '@eslint-react/set-state-in-render': 'off',
+      '@eslint-react/unsupported-syntax': 'off',
+    },
+  },
+
+  // recommended-typescript omits this one, but eslint-config-next had
+  // react/display-name on, so restore the equivalent.
+  {
+    name: 'eslint-react/next-parity',
+    rules: {
+      '@eslint-react/no-missing-component-display-name': 'error',
+    },
   },
 
   // The one import rule eslint-config-next enabled. eslint-plugin-import
@@ -90,6 +124,11 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      // typescript-eslint recommended ships this at 'error'. It fires zero
+      // times today, but at 'error' it would turn a future edit into a red
+      // CI run for a rule that never ran before this upgrade. Same reasoning
+      // as no-unused-vars above.
+      '@typescript-eslint/no-unused-expressions': 'warn',
     },
   },
 
