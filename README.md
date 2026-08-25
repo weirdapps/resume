@@ -188,4 +188,4 @@ resume/
 
 MIT, see [LICENSE](LICENSE). Copyright (c) 2026 Dimitrios Plessas.
 
-Security policy: see [SECURITY.md](SECURITY.md). Please email `plessas@nbg.gr` for responsible disclosure; do not open a public issue for vulnerabilities.
+Security policy: see [SECURITY.md](SECURITY.md). For responsible disclosure, open this repository's **Security** tab and choose **Report a vulnerability**; do not open a public issue for vulnerabilities.
