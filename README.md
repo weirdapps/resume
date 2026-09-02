@@ -99,10 +99,9 @@ Both run in CI via `.github/workflows/quality.yml`. There is currently **no unit
 
 ### Pinned major versions
 
-Two dependencies are deliberately held back, and Dependabot is configured in `.github/dependabot.yml` to stop proposing their majors:
+One dependency is deliberately held back, and Dependabot is configured in `.github/dependabot.yml` to stop proposing its majors:
 
 - **TypeScript stays on 6.x.** TypeScript 7 (the Go-native compiler) is rejected by both tools in this stack. `next build` fails with "TypeScript 7.x does not provide the compiler API required by Next.js", recoverable only through the experimental `useTypeScriptCli` flag, and `typescript-eslint` throws "does not support TS 7.0", which stops `eslint-config-next` from loading so `npm run lint` cannot run at all. Revisit when TS 7.1 ships the stable programmatic API.
-- **ESLint stays on 9.x.** `eslint-config-next` pulls in `eslint-plugin-react` 7.37.5, whose peer range ends at eslint `^9.7`. On eslint 10 every lint run crashes with `contextOrFilename.getFilename is not a function`. Revisit when `eslint-config-next` supports eslint 10.
 
 ## Deployment
 
