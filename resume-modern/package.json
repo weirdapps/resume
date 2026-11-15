@@ -27,7 +27,7 @@
     "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.6.2",
     "eslint": "^10.14.0",
-    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-import-x": "^4.18.1",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.14.0",
     "tailwindcss": "^4.3.4",
@@ -37,6 +37,7 @@
   "overrides": {
     "postcss": ">=8.5.18",
     "sharp": ">=0.35.0",
-    "nanoid": "^3.3.18"
+    "nanoid": "^3.3.18",
+    "minimatch": ">=11.0.1"
   }
 }
